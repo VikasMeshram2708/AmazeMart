@@ -5,8 +5,17 @@ import { ModeToggle } from "./ModeToggle";
 import { Input } from "./ui/input";
 import { NavItems } from "@/data/NavItems";
 import Link from "next/link";
-import { CircleUser, Menu, Search, ShoppingCart, X } from "lucide-react";
+import {
+  ChevronDown,
+  CircleUser,
+  Menu,
+  Search,
+  ShoppingCart,
+  X,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
+import { Label } from "./ui/label";
+import { ProfileDropDown } from "./ProfileDropDown";
 
 const SideBar = () => {
   return (
@@ -72,8 +81,20 @@ export default function Navbar() {
           />
         </div>
         <div className="flex items-center gap-3">
-          <CircleUser />
-          <ShoppingCart />
+          <div className="flex items-center gap-3">
+            {/* <CircleUser /> */}
+            <ProfileDropDown />
+            {/* <Label htmlFor="auth" className="text-lg">
+              Login
+            </Label> */}
+            {/* <ChevronDown /> */}
+          </div>
+          <div className="flex items-center gap-2">
+            <Label htmlFor="cart" className="text-lg">
+              Cart
+            </Label>
+            <ShoppingCart />
+          </div>
         </div>
       </div>
       {isOpen && <SideBar />}

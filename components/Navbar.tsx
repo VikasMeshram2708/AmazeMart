@@ -5,7 +5,7 @@ import { ModeToggle } from "./ModeToggle";
 import { Input } from "./ui/input";
 import { NavItems } from "@/data/NavItems";
 import Link from "next/link";
-import { Menu, Search, X } from "lucide-react";
+import { CircleUser, Menu, Search, ShoppingCart, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -17,20 +17,26 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex items-center justify-between px-4 py-3  shadow-md">
-      {/* Hamburger Menu */}
-      <div className="lg:hidden">
-        <button onClick={toggleMenu}>
-          {isOpen ? <X size={24} className="absolute top-5 right-5 z-40" /> : <Menu size={24} />}
-        </button>
-      </div>
+    <nav className="flex items-center justify-between px-4 py-2">
+      <div className="flex items-center gap-2">
+        {/* Hamburger Menu */}
+        <div className="lg:hidden">
+          <button onClick={toggleMenu}>
+            {isOpen ? (
+              <X size={30} className="top-3 hover:text-red-500 absolute z-40 right-5" />
+            ) : (
+              <Menu size={24} className="mt-2" />
+            )}
+          </button>
+        </div>
 
-      {/* Heading */}
-      <h1 className="text-2xl font-bold">
-        <Link href="/">
-          Amaze <span className="text-orange-500">Mart</span>
-        </Link>
-      </h1>
+        {/* Heading */}
+        <h1 className="text-2xl font-bold">
+          <Link href="/">
+            Amaze <span className="text-orange-500">Mart</span>
+          </Link>
+        </h1>
+      </div>
 
       {/* Nav Items */}
       <ul
@@ -54,14 +60,25 @@ export default function Navbar() {
         ))}
       </ul>
 
+      {/* Button Area */}
+      <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <label>Login</label>
+          <CircleUser />
+        </div>
+        <div>
+          <ShoppingCart />
+        </div>
+      </div>
+
       {/* Search Bar and Mode Toggle */}
-      <div className="flex items-center gap-3">
+      {/* <div className="flex items-center gap-3">
         <div className="border-2 rounded-md flex items-center">
           <Input type="text" placeholder="Search Product" className="text-lg" />
           <Search role="button" className="w-10" color="orange" size="22" />
         </div>
         <ModeToggle />
-      </div>
+      </div> */}
     </nav>
   );
 }

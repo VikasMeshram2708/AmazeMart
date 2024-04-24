@@ -6,4 +6,4 @@
 
 [ ] Navbar
   - [ ] Add Debouncing
-  - [ ] Make Hamburger Menu
+  - [x] Make Hamburger Menu

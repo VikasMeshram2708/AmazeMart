@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import GetElectronicsProducts from "@/lib/GetElectronicsProducts";
+import Link from "next/link";
 
 export async function BestOfElectronics() {
   const AllProducts: Promise<Product[]> = GetElectronicsProducts();
@@ -16,7 +17,9 @@ export async function BestOfElectronics() {
 
   return (
     <section className="w-full max-w-[90rem] mx-auto">
-      <h1 className="my-5 text-lg sm:text-2xl font-semibold">Best Of Electronics</h1>
+      <h1 className="my-5 text-lg sm:text-2xl font-semibold">
+        Best Of Electronics
+      </h1>
       <div className="container mx-auto flex gap-3 sm:gap-16">
         <Carousel className="w-full max-w-[90rem] mx-auto">
           <CarouselContent className="-ml-1">
@@ -28,12 +31,14 @@ export async function BestOfElectronics() {
                 <div className="p-1">
                   <Card>
                     <CardContent className="relative flex aspect-square items-center justify-center p-6">
-                      <Image
-                        fill
-                        className="w-full h-full object-contain"
-                        src={item?.image}
-                        alt={item?.title}
-                      />
+                      <Link href={`/${item?.id}`}>
+                        <Image
+                          fill
+                          className="w-full h-full object-contain"
+                          src={item?.image}
+                          alt={item?.title}
+                        />
+                      </Link>
                     </CardContent>
                   </Card>
                 </div>
@@ -47,7 +52,7 @@ export async function BestOfElectronics() {
         <div className="hidden lg:block relative z-[-999] w-96 h-80 rounded-md">
           <Image
             fill
-            className="object-cover w-full max-w-md h-full"
+            className="bg-cover w-full max-w-md h-full"
             src="https://is.gd/QUt6vP"
             alt="discount and offers"
           />

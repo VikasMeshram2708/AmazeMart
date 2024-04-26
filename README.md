@@ -11,4 +11,5 @@
 * [x] Best of Electronics Section
 * [x] Best Deals of the day
 * [x] Footer
+* [x] Single Product Page 
 

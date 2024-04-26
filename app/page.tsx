@@ -10,8 +10,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import GetAllProducts from "@/lib/GetAllProducts";
-import { IndianRupee } from "lucide-react";
+import { Heart, IndianRupee, Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home() {
   const AllProducts: Promise<Product[]> = GetAllProducts();
@@ -37,20 +38,29 @@ export default async function Home() {
         </h1>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {Products?.map((item) => (
-            <Card key={item?.id}>
-              <CardHeader>
-                <CardTitle className="text-sm line-clamp-1">
+            <Card key={item?.id} className="grid gap-5">
+              <CardHeader className="relative">
+                <div className="absolute right-5 top-3">
+                  <Heart />
+                </div>
+              </CardHeader>
+              <CardContent className="grid gap-5">
+                <div className="relative aspect-square">
+                  <Link href={`/${item?.id}`}>
+                    <Image
+                      fill
+                      src={item?.image}
+                      alt={item?.title}
+                      className="object-contain w-full h-full"
+                    />
+                  </Link>
+                </div>
+                <CardTitle className="text-sm sm:text-lg line-clamp-2">
                   {item?.title}
                 </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="relative aspect-square">
-                  <Image
-                    fill
-                    src={item?.image}
-                    alt={item?.title}
-                    className="object-contain w-full h-full"
-                  />
+                <div className="bg-green-700 rounded-md w-20 flex items-center justify-center gap-3 p-1">
+                  <p className="text-sm">{item?.rating.rate}</p>
+                  <Star size="15" color="white" />
                 </div>
               </CardContent>
               <CardFooter className="flex flex-wrap items-center justify-between">
@@ -58,7 +68,9 @@ export default async function Home() {
                   <IndianRupee />
                   {item?.price}
                 </Button>
-                <Button variant="link">See Details</Button>
+                <Button variant="link">
+                  <Link href={`/${item?.id}`}>See Details</Link>
+                </Button>
               </CardFooter>
             </Card>
           ))}

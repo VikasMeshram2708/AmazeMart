@@ -1,21 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { ModeToggle } from "./ModeToggle";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Input } from "./ui/input";
 import { NavItems } from "@/data/NavItems";
-import Link from "next/link";
-import {
-  ChevronDown,
-  CircleUser,
-  Menu,
-  Search,
-  ShoppingCart,
-  X,
-} from "lucide-react";
-import { usePathname } from "next/navigation";
+import { Menu, Search, ShoppingCart, X } from "lucide-react";
 import { Label } from "./ui/label";
 import { ProfileDropDown } from "./ProfileDropDown";
+import Link from "next/link";
 
 const SideBar = () => {
   return (
@@ -51,12 +42,8 @@ const SideBar = () => {
 };
 
 export default function Navbar() {
-  const path = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const [productValue, setProductValue] = useState("");
 
   return (
     <nav className="sticky top-0 z-[40] bg-slate-900 w-full mx-auto py-2 shadow-slate-900 shadow-lg">
@@ -68,18 +55,24 @@ export default function Navbar() {
             className="md:hidden cursor-pointer"
           />
           <h1 className="font-semibold text-2xl italic">
-            Amaze<span className="text-orange-500">Mart</span>
+            <Link href="/">
+              Amaze<span className="text-orange-500">Mart</span>
+            </Link>
           </h1>
         </div>
-        <div className="border hidden container mx-auto md:flex items-center  px-4 py-2 rounded-md gap-4">
+        <form className="border hidden container mx-auto md:flex items-center  px-4 py-2 rounded-md gap-4">
           <Search />
           <Input
             inputMode="text"
             className="border-none text-lg px-4 py-2"
             type="text"
+            value={productValue}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setProductValue(e?.target?.value)
+            }
             placeholder="Search for Products, Brands and Products"
           />
-        </div>
+        </form>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3">
             <ProfileDropDown />

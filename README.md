@@ -10,5 +10,5 @@
 * [x] Auto Changing Carousel
 * [x] Best of Electronics Section
 * [x] Best Deals of the day
-* [ ] Footer
+* [x] Footer
 

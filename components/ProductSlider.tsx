@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -11,59 +10,43 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { BannerData } from "@/data/BannerData";
 import Image from "next/image";
 
 export function ProductSlider() {
-  const BannerData: Banner[] = [
-    {
-      id: 1,
-      imgSrc: "https://is.gd/1yk9YZ",
-    },
-    {
-      id: 2,
-      imgSrc: "https://is.gd/NsYN6m",
-    },
-    {
-      id: 3,
-      imgSrc: "https://is.gd/eAI1q7",
-    },
-  ];
-
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 4000, stopOnInteraction: false })
   );
 
   return (
-    <Carousel
-      plugins={[plugin.current]}
-      className="w-full max-w-[90%] mx-auto p-6"
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
-    >
-      <CarouselContent>
-        {BannerData?.map((item) => (
-          <CarouselItem key={item?.id}>
-            <div className="">
+    <section className="container mx-auto">
+      <Carousel
+        plugins={[plugin.current]}
+        className="w-full mx-auto"
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+      >
+        <CarouselContent className="carousel-content px-4 md:px-0">
+          {BannerData.map((item, index) => (
+            <CarouselItem key={item.id} className="carousel-item">
               <Card>
-                <CardContent className="flex">
+                <CardContent className="relative h-64 md:h-96">
                   <Image
-                    src={item?.imgSrc}
-                    className="w-full h-96 bg-cover"
-                    alt="grab hot deals on 50% discount"
-                    width={500}
-                    height={500}
-                    onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                      e.currentTarget.src = "https://is.gd/McqRnk";
-                    }}
+                    src={item.imgSrc}
+                    alt="banner, discounts & offers"
+                    className="w-full h-full bg-cover"
+                    fill
                   />
                 </CardContent>
               </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="carousel-prev text-4xl">
+          &#8249;
+        </CarouselPrevious>
+        <CarouselNext className="carousel-next text-4xl">&#8250;</CarouselNext>
+      </Carousel>
+    </section>
   );
 }

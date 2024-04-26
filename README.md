@@ -4,6 +4,11 @@
 
 ## TODO
 
-[ ] Navbar
-  - [ ] Add Debouncing
-  - [x] Make Hamburger Menu
+* Home Page Overall Components will have
+* [x] Navbar
+* [x] Categories
+* [x] Auto Changing Carousel
+* [x] Best of Electronics Section
+* [x] Best Deals of the day
+* [ ] Footer
+

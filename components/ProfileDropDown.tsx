@@ -1,8 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,20 +10,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, CircleUser, Gift, UserRound } from "lucide-react";
+import { CircleUser, Gift, UserRound } from "lucide-react";
 import Link from "next/link";
 
-type Checked = DropdownMenuCheckboxItemProps["checked"];
-
 export function ProfileDropDown() {
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button className="flex gap-2 items-center">
           <CircleUser />
           Login
-          <ChevronDown />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">

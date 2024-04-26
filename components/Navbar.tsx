@@ -59,8 +59,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full max-w-[90rem] mx-auto py-2">
-      <div className="w-full px-4 py-2 flex items-center justify-between gap-10">
+    <nav className="sticky top-0 z-[40] bg-slate-900 w-full mx-auto py-2 shadow-slate-900 shadow-lg">
+      <div className="w-full max-w-[90rem] mx-auto px-4 py-2 flex items-center justify-between gap-5">
         <div id="toggleBtn" className="flex items-center gap-3">
           {/* Menu Icon */}
           <Menu
@@ -82,12 +82,7 @@ export default function Navbar() {
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3">
-            {/* <CircleUser /> */}
             <ProfileDropDown />
-            {/* <Label htmlFor="auth" className="text-lg">
-              Login
-            </Label> */}
-            {/* <ChevronDown /> */}
           </div>
           <div className="flex items-center gap-2">
             <Label htmlFor="cart" className="text-lg">

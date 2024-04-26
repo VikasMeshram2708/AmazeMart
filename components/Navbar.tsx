@@ -77,12 +77,12 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <ProfileDropDown />
           </div>
-          <div className="flex items-center gap-2">
+          <Link href="cart" className="cursor-pointer flex items-center gap-2">
             <Label htmlFor="cart" className="text-lg">
               Cart
             </Label>
             <ShoppingCart />
-          </div>
+          </Link>
         </div>
       </div>
       {isOpen && <SideBar />}
